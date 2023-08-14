@@ -1,0 +1,110 @@
+
+Volvo Truck Analytics
+This report is for the progress period ending on 12/12/2019.
+Report is based on the guidelines under the "Report" section provided in the rubric.
+
+Ioannis Batsios
+<task><hours>
+...
+
+Bill Downs
+Cleaning data and investigations into what a APU was (4-10hours)
+There was no simple answer to this. How to resample to make the data more revealing, remove nans, setting up meetings with daniel
+and different engineers. 
+
+General distribution analysis (~2hours)
+Our data was not normal and histograms/KDE is easy to build in python.
+
+Linear regression with scatterplots and accuracy metrics (4-7hours)
+Alot of trial and error went into this as some metrics like the inverter and friderator were not connected to the APU unit, and i did
+not know this until I had meeting with engineering. The Ambient air temperature and engine speed had little correlation with the apu battery 
+bank while the apu and alternator showed a clear correlation.
+
+Machine Learning(~5-8hours)
+This was the cool part. Using logistic regression to predict a time of day the APU battery would be charged. I tried to use too much data
+initally(the full 10Hz), assuming more data is better, but the results were very strange and unpredicatable. I then scaled down to the original 
+days and minutes per day and got some good results on a test train and split method. 
+
+Final Draft slides (~4 hours)
+Putting everything in a rough outline to review results of our project. Placing my results and discriptions in slides and wrapping it all
+up with a thoughtful conclusion of our findings.
+...
+
+Wahab Ehsan
+Determine whether there are rows or columns with all NaN values, if so remove them. (~3 Hours)
+This was completed by Wahab Ehsan. In order to find rows that are not useful because of the excessive amounts of NaN types, the 
+following conditions were taken into consideration. The number of columns for each truck is different. The times NaN type in truck1 
+does not equal to the number of time NaN types appear on truck2. Columns with all NaN types are useless and are deleted using pandas. 
+Rows are deleted by the threshold value percent. If the Non-NaN values are less than the percent given, then the row would be deleted. 
+Initially the percent threshold is set to 75 at the moment as a global variable and can be decremented or incremented depending on 
+the data needed.
+
+Display Data by day (~3 hours) 
+Function implementation of display data by day was created to sort all data by average for each day for a certain attribute. 
+Goal was to create a cleaner way of looking at data to find something interesting. We were able to find out that data for Truck one 
+data was the week of data or seven days which was expected, but for truck two there was only 3 days' worth of data, which was less than we were told.
+This means we'll have to decide which days to compare when comparing the two trucks and which days will be not useful.
+
+Outlier Detection data (~12 hours)
+This function was made to detect all the outliers in the data for a certain attribute and have a boxplot made for visuals. 
+Even though the data for truck one was 7 days' worth, the averages were very far apart making me think if there are a lot of outliers 
+and after running it through the function I was able to find out that the last 3 days of data for truck one was outliers. Meaning 
+there were three days worth of no useful data for Speed (km/hr).
+
+Determining Estimator (~3 hour)
+Was able to determine to use the Kernel Density Estimation (KDE) because of it being non-parametric. For the bandwidth I decided to 
+use a larger bandwidth since our data was scattered around. Use of this function will be beneficial in the future. 
+We used this because our data had large number of outliers and was not a normal distribution. Maybe after removing the outliers 
+we will switch to MLE, and we didn't choose MoM because that is also for normal distributions and not as effective in our case because of 
+our several outliers in the data.
+
+Time to Ideal Temperature with Ambient Temperature (~7 hours)
+Worked on finding the time it takes to get to ideal temperature with outside temperature taken into consideration. The Data for
+for time wasnt given. Had to find out the Ideal temperature for the oil. Found the average temperature of oil for each day and used
+it as the Ideal temperature. Then made function to find difference of seconds between two indexes. Was able to check from begining to
+whenever the temperature gets to ideal temperature and found the seconds it took to get there. Made sure the temperature difference between begining
+to ideal had at least 30 degrees C difference and the session the truck is been on is at least for 600 seconds. Then was able to 
+make X equals to the outside temperature and Y as the Seconds it took to get to ideal temperature. Then plotted on graph and saw positive
+correlation, which was unexpected. Make least square line for predictions and was able to predict few values.
+...
+
+James Polk
+<task><hours>
+...
+
+Christopher Thacker
+Rename Columns to Be More Readable (~2 hours)
+The data that's been provided isn't very useful if we can't understand what it means, so the provided column names needed to be changed.
+These changes included removing unnecessary column name parts, changing title formats, and including the unit of measurement, if 
+provided, to the title for easier readability. Ambiguous titles were clarified to the best of the team's knowledge to-date, but slight 
+changes may come in the future. The created function changes the column names with a Python dictionary which is currently being 
+generated by CSV files.
+
+GPS Speed vs. Wheel-Based Speed Analysis & Determination of Long/Short Haul Trucks (16+ hours)
+The goal of this task was to compare GPS Speed and Wheel-Based Vehicle Speed for Truck 1 and Truck 2 internally through visual
+representation and percent change, and then compare the results for each truck to each other. The results revealed a major issue
+with the speed data: they are bimodal. There are two peaks for the distributions which represent a "stop" state and a
+"go" state, with "stop" being all of the zero or near-zero values and "go" being all of the values at the rightmost peak near the higher
+readings. This is a problem because it causes the average speed for the trucks to become inaccurate. In addition to this, the GPS Speed
+readings for Truck 2 are significantly lower than its Wheel-Based counterpart, but this isn't true for Truck 1's data: they are fairly
+consistent with each other in terms of hard-value readings. However, the trends are the same between the two columns in Truck 2, which
+indicates that the GPS Speed component was misconfigured. Finally, this initial and basic analysis of these two columns has indicated
+that the long-haul truck is Truck 1 and the short-haul is Truck 2.
+
+Truck 2 GPS Speed Corrections (~4 hours)
+As we learned from Project Progress two (2), Truck 2 has some faulty data for its GPS Speed
+component. This is a bigger issue for Volvo than us, but my questions from this was "how well
+would this component work if it was completely functional and what would its more correct
+measurements look like?" Thankfully, Truck 1's components appear to be working perfectly fine.
+This means I was able to use Truck 1's data as a model to predict what Truck 2's GPS Speed values
+_should_ be. To solve this issue, I took the difference of means for Truck 1's GPS Speed and
+Wheel-Based Speeds. Using that value, I iterated through Truck 2's Wheel-Based Speed values and
+added that mean to each value and stored the result into a separate column. These calculated values
+were the "predicted" GPS Speed values for Truck 2. I created visualizations and calculated their values 
+to better analyze the results, and those results appear to be fairly consistent with the correctly measured
+values for Truck 1. 
+
+GitHub Repository Management (~10 hours)
+For most of Project Progress 2, I have been given the responsibility of managing the GitHub repository in a multitude of ways. This
+includes updating the home page README, creating, updating, and closing Issues, creating and assigning Labels to those Issues,
+managing and assigning group members to those Issues, and trying to keep the general repository structure simple and clean.
