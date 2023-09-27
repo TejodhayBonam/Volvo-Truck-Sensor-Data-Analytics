@@ -1,25 +1,25 @@
 # Volvo Truck Analytics
 
-### Team Members with Tasks: 
-- [Ioannis Batsios](https://github.com/IBatsios)
+### Tasks: 
+
     - External Temperature vs. Turbospeed Analysis.
     - Component Degradation from Temperature Analysis.
     - Component Degradation Regression.
     
-- [Bill Downs](https://github.com/WilliamWallaceKildFiftyMen)
+
     - APU Analysis & Regression.
     - APU Component Correlation.
     - Main Ambassador with Volvo.
-- [Wahab Ehsan](https://github.com/WahabEhsan)
+
     - Removal of Invalid Rows & Columns
     - Outlier Detection & Removal.
     - Displaying Data by Day.
     - Oil Temperature Analysis & Regression.
-- [James Polk](https://github.com/methos237)
+- 
     - CPU Load Analysis & Regression.
     - Time Series Analysis.
     - Component Analysis & Weighted Averaging.
-- [Christopher Thacker](https://github.com/Kozmocha)
+- 
     - Column Renaming.
     - GPS Speed vs. Wheel-Based Speed Analysis.
     - Truck 2 GPS Speed Value Predictions / Corrections.
