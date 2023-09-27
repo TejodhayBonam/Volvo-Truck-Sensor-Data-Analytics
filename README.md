@@ -15,11 +15,11 @@
     - Outlier Detection & Removal.
     - Displaying Data by Day.
     - Oil Temperature Analysis & Regression.
-- 
+
     - CPU Load Analysis & Regression.
     - Time Series Analysis.
     - Component Analysis & Weighted Averaging.
-- 
+
     - Column Renaming.
     - GPS Speed vs. Wheel-Based Speed Analysis.
     - Truck 2 GPS Speed Value Predictions / Corrections.
